@@ -3,12 +3,12 @@ function getidnv(){
     var taikhoan = document.getElementById("tknv").value;
     var ten=document.getElementById("name").value;
     var email=document.getElementById("email").value;
-    var password=document.getElementById("password").value*1;
+    var password=document.getElementById("password").value;
     var date=document.getElementById("datepicker").value;
     var salary=document.getElementById("luongCB").value*1;
     var chucvu = document.getElementById("chucvu").value;
     var gioLam=document.getElementById("gioLam").value;
-    return{taikhoan,ten,email,email,password,date,salary,chucvu,gioLam}
+    return{taikhoan,ten,email,password,date,salary,chucvu,gioLam}
 }
 
 // render dsnv

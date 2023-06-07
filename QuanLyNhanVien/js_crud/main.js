@@ -8,10 +8,26 @@ if(dataJSON_nv != null){
 function themnv(){
     //ID nhanvien
     var id=getidnv();
-
+    console.log(id.password.length);
     //validate
-    var check= kiemtraTrungTen(id.ten, dsnv);
-    if(check){
+        //TaiKhoan
+    var kiemtraTaiKhoan=
+    kiemtraTrong(id.taikhoan,"tbTKNV","Trường không được để trống")
+    &&kiemTraDoDai(4,6,id.taikhoan,"tbTKNV","Tài khoản phải có độ dài từ 4 đến 6 ký số") 
+    &&kiemTraKySo(id.taikhoan,"tbTKNV","Trường chỉ chứa ký số");
+        //Ten
+    var kiemtraTen=
+    kiemtraTrong(id.ten,"tbTen","Trường không được để trống")
+    &&kiemtraTrungTen(id.ten, dsnv)
+        //Password
+    var kiemtraPass=
+    kiemtraTrong(id.password,"tbMatKhau","Trường không được để trống")
+    && kiemTraDoDai(6,10,id.password,"tbMatKhau","Mật khẩu phải có độ dài từ 6 đến 10 ký tự") 
+    && kiemTraKyTuDacBiet(id.password,"tbMatKhau", "Mật khẩu phải chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt")
+        
+    //checkvalidate
+    var check= kiemtraTaiKhoan & kiemtraTen & kiemtraPass ;
+    if(check){ 
         //object nv
         var nvien =new nhanvien(id.taikhoan,id.ten,id.email, id.password, id.date, id.salary, id.chucvu, id.gioLam);
         //push vao array de push len LOCAL
