@@ -5,7 +5,7 @@ function getidnv(){
     var email=document.getElementById("email").value;
     var password=document.getElementById("password").value;
     var date=document.getElementById("datepicker").value;
-    var salary=document.getElementById("luongCB").value*1;
+    var salary=document.getElementById("luongCB").value;
     var chucvu = document.getElementById("chucvu").value;
     var gioLam=document.getElementById("gioLam").value;
     return{taikhoan,ten,email,password,date,salary,chucvu,gioLam}
@@ -22,8 +22,8 @@ function renderDSNV(dsnv){
             <td>${dsnv[i].email}</td>
             <td>${dsnv[i].date}</td>
             <td>${dsnv[i].chucvu}</td>
-            <td>0</td>
-            <td>0</td>
+            <td>${dsnv[i].tongLuong}</td>
+            <td>${dsnv[i].xepLoai}</td>
             <td>
             <button 
             class="btn btn-warning" 
@@ -48,4 +48,26 @@ function transferToLocal(dsnv, item_name_str){
 function transferFromLocal(item_name_str,dsnv){
     var data_converted=localStorage.getItem(item_name_str);
     dsnv=JSON.parse(data_converted);
+}
+
+function tongLuong (valueluongcb, chucvu){
+    if(chucvu == "Sếp" ){
+        return valueluongcb*3;
+    }else if (chucvu == "Trưởng phòng"){
+        return valueluongcb*2;
+    }else{
+        return valueluongcb*1;
+    }
+}
+function xepLoai(valueGioLam){
+    valueGioLam=valueGioLam*1;
+    if(valueGioLam >= 192){
+        return "Xuất sắc"
+    }else if (valueGioLam >= 176){
+        return "Giỏi";
+    }else if (valueGioLam >= 160){
+        return "Khá";
+    }else{
+        return "Trung Bình";
+    }
 }

@@ -52,7 +52,38 @@ function kiemTraKyTuDacBiet(inputValue, idSpan, error_str){
         return false;
     }
 }
-
+//ktra luongCB
+function kiemTraLuongCB(inputValue, idSpan , error_str){
+    var inputValue = inputValue*1;
+    if(inputValue>= 1e6 && inputValue <= 2e7){
+        showMessage(idSpan,"");
+        return true;
+    }else{
+        showMessage(idSpan, error_str);
+        return false;
+    }
+}
+//chucvu
+function kiemTraCV(inputValue, idSpan,error_str){
+    if(inputValue == "Chọn chức vụ"){
+        showMessage(idSpan, error_str);
+        return false;
+    }else{
+        showMessage(idSpan, "");
+        return true;
+    }
+}
+//Gio lam
+function kiemtraGioLam(inputValue , idSpan, error_str){
+    var index=inputValue*1
+    if(index >= 80 && index <=200){
+        showMessage(idSpan, "");
+        return true;
+    }else{
+        showMessage(idSpan,error_str);  
+        return false;
+    }
+}
 //fucntion chung
 function kiemTraDoDai(min, max, inputValue, idSpan, error_str){
     var passLength = inputValue.length;
@@ -67,7 +98,7 @@ function kiemTraDoDai(min, max, inputValue, idSpan, error_str){
 function kiemtraTrong(inputValue,idSpan, error_str){
     var length = inputValue.length;
     if(length > 0){
-        showMessage(idSpan, "");
+        showMessage(idSpan, " ");
         return true;
     }else{
         showMessage(idSpan,error_str);

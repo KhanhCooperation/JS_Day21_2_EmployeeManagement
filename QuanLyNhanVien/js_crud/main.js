@@ -8,7 +8,6 @@ if(dataJSON_nv != null){
 function themnv(){
     //ID nhanvien
     var id=getidnv();
-    console.log(id.password.length);
     //validate
         //TaiKhoan
     var kiemtraTaiKhoan=
@@ -19,14 +18,40 @@ function themnv(){
     var kiemtraTen=
     kiemtraTrong(id.ten,"tbTen","Trường không được để trống")
     &&kiemtraTrungTen(id.ten, dsnv)
+        //email
+    var kiemTrEmail= 
+    kiemtraTrong(id.email,"tbEmail","Trường không được để trống")
+    &&kiemTraEmail(id.email);
         //Password
     var kiemtraPass=
     kiemtraTrong(id.password,"tbMatKhau","Trường không được để trống")
     && kiemTraDoDai(6,10,id.password,"tbMatKhau","Mật khẩu phải có độ dài từ 6 đến 10 ký tự") 
     && kiemTraKyTuDacBiet(id.password,"tbMatKhau", "Mật khẩu phải chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt")
-        
+        //ktra date
+    var kiemtraDate=
+    kiemtraTrong(id.date,"tbNgay","Trường không được để trống");
+        //ktra Salary
+    var kiemtraLuong=
+    kiemtraTrong(id.salary,"tbLuongCB","Trường không được để trống")
+    && kiemTraLuongCB(id.salary,"tbLuongCB" , "Luơng không hợp lệ" );
+        //ktra CV
+    var kiemtraChucVu=
+    kiemTraCV(id.chucvu, "tbChucVu","Không hợp lế");
+        //ktra GioLam
+    var kiemtraGiolam=
+    kiemtraTrong(id.gioLam,"tbGiolam","Trường không được để trống")
+    && kiemtraGioLam(id.gioLam, "tbGiolam", "Giờ làm không hợp lệ");
     //checkvalidate
-    var check= kiemtraTaiKhoan & kiemtraTen & kiemtraPass ;
+    var check= 
+    kiemtraTaiKhoan 
+    & kiemtraTen 
+    & kiemTrEmail 
+    & kiemtraPass
+    & kiemtraDate
+    & kiemtraLuong
+    & kiemtraChucVu 
+    & kiemtraGiolam;
+ 
     if(check){ 
         //object nv
         var nvien =new nhanvien(id.taikhoan,id.ten,id.email, id.password, id.date, id.salary, id.chucvu, id.gioLam);
@@ -37,7 +62,9 @@ function themnv(){
 
         //push len LOCAL
         transferToLocal(dsnv, "DSNV");
+        console.log(nvien);
     }
+    
 }
 
 function xoaNV(ten){
