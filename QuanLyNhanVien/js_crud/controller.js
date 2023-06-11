@@ -71,3 +71,18 @@ function xepLoai(valueGioLam){
         return "Trung Bình";
     }
 }
+
+
+
+//timNV
+let phanloai = (input_str) => {
+    var data_converted=localStorage.getItem("DSNV");
+    dsnv=JSON.parse(data_converted);
+    var dsXL=[];
+    for (let i = 0; i < dsnv.length; i++) {
+        if(dsnv[i].xepLoai==input_str){
+            dsXL.push(dsnv[i]);
+        }
+    }
+    renderDSNV(dsXL);
+} 

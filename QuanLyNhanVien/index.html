@@ -126,7 +126,14 @@
 								<div class="input-group">
 									<input type="text" class="form-control" placeholder="Loại nhân viên" id="searchName">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
+										<button class="input-group-text" id="btnTimNV dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<a class="dropdown-item" onclick="renderDSNV(dsnv); clear_sorting()"  href="#">Hiển thị tất cả</a>
+											<a class="dropdown-item" onclick="timNV('Xuất sắc')" href="#">Xuất sắc</a>
+											<a class="dropdown-item" onclick="timNV('Giỏi')" href="#">Giỏi</a>
+											<a class="dropdown-item" onclick="timNV('Khá')" href="#">Khá</a>
+											<a class="dropdown-item" onclick="timNV('Trung Bình')" href="#">Trung Bình</a>
+										  </div>
 									</div>
 								</div>
 							</div>
